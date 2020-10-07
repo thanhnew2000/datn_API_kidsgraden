@@ -16,8 +16,9 @@ class QuanLyDonDanThuocController extends Controller
         $this->QuanLyDonDanThuocRepository = $QuanLyDonDanThuocRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        dd($request->all());
        $this->QuanLyDonDanThuocRepository->store();
     }
 }
