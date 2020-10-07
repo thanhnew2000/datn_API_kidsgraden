@@ -5,7 +5,7 @@ namespace App\Http\Controllers\DonDanThuoc;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\QuanLyDonDanThuocRepository;
-
+use Storage;
 class QuanLyDonDanThuocController extends Controller
 {
     protected $QuanLyDonDanThuocRepository;
@@ -18,7 +18,10 @@ class QuanLyDonDanThuocController extends Controller
 
     public function index(Request $request)
     {
-        dd($request->all());
-       $this->QuanLyDonDanThuocRepository->store();
+        $anh = $request->file("file");
+        $pathLoad = $anh->store('public/uploads/anh_gv');
+        $path =  $pathLoad;
+        $dataRequest['anh'] = $path;   
+        return 'thành công';
     }
 }
