@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\QuanLyDonDanThuocRepository;
 use App\Repositories\ChiTietDonDanThuocRepository;
+use App\Repositories\NotificationRepository;
 
 use Storage;
 use Carbon\Carbon;
@@ -13,13 +14,16 @@ class QuanLyDonDanThuocController extends Controller
 {
     protected $QuanLyDonDanThuocRepository;
     protected $ChiTietDonDanThuocRepository;
+    protected $NotificationRepository; 
     public function __construct(
         ChiTietDonDanThuocRepository $ChiTietDonDanThuocRepository,
-        QuanLyDonDanThuocRepository $QuanLyDonDanThuocRepository
+        QuanLyDonDanThuocRepository $QuanLyDonDanThuocRepository,
+        NotificationRepository $NotificationRepository
     )
     {
         $this->QuanLyDonDanThuocRepository = $QuanLyDonDanThuocRepository;
         $this->ChiTietDonDanThuocRepository = $ChiTietDonDanThuocRepository;
+        $this->NotificationRepository = $NotificationRepository;
     }
 
     public function store(Request $request)
@@ -46,6 +50,15 @@ class QuanLyDonDanThuocController extends Controller
             $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
       
         };
-       return 'thành công';
+        $thongbao=[];
+        $thongbao['title'] ='tiêu đề';
+        $thongbao['content'] ='nội dung';
+        $thongbao['route'] ='route';
+        $thongbao['user_id'] =1;
+        $thongbao['auth_id'] =1;
+
+
+        $this->NotificationRepository->create($thongbao);
+        return $thongbao;
     }
 }
