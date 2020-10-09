@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('dan-thuoc', 'DonDanThuoc\QuanLyDonDanThuocController@index');
+Route::get('all-dan-thuoc', 'DonDanThuoc\QuanLyDonDanThuocController@getAll');
 
 Route::post('login', 'AuthController@login');
 
@@ -20,8 +22,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout','AuthController@logout');
     Route::get('users', 'AuthController@users');
     Route::get('me', 'AuthController@me');
-
-    Route::group(['namespace'=>'DonDanThuoc'],function(){
-        Route::post('dan-thuoc', 'QuanLyDonDanThuocController@index');
-    });
+    // Route::group(['namespace'=>'DonDanThuoc'],function(){
+    //     Route::post('dan-thuoc', 'QuanLyDonDanThuocController@index');
+    // });
+    
 });

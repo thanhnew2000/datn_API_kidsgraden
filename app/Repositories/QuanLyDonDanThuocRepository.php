@@ -22,7 +22,6 @@ class QuanLyDonDanThuocRepository extends BaseModelRepository
 
     public function store()
     {
-        dd(1);
         return $this->model->get();
     }
 
