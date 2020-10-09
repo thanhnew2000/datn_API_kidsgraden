@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::post('login', 'AuthController@login');
-
+Route::group(['namespace'=>'DonDanThuoc'],function(){
+    Route::post('dan-thuoc', 'QuanLyDonDanThuocController@store');
+});
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout','AuthController@logout');
     Route::get('users', 'AuthController@users');
     Route::get('me', 'AuthController@me');
-    Route::group(['namespace'=>'DonDanThuoc'],function(){
-        Route::post('dan-thuoc', 'QuanLyDonDanThuocController@index');
-    });
+   
     
 });
