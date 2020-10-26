@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\DonDanThuoc;
+use App\Models\HocSinh;
 use App\Repositories\BaseModelRepository;
 
-class QuanLyDonDanThuocRepository extends BaseModelRepository
+class HocSinhRepository extends BaseModelRepository
 {
     protected $model;
     public function __construct(
-        DonDanThuoc $model
+        HocSinh $model
     ) {
         parent::__construct();
         $this->model = $model;
@@ -17,15 +17,16 @@ class QuanLyDonDanThuocRepository extends BaseModelRepository
 
     public function getModel()
     {
-        return DonDanThuoc::class;
+        return HocSinh::class;
     }
 
     public function store()
     {
         return $this->model->get();
     }
-    public function getAllByIdHs($id_hs){
-        return $this->model->where('hoc_sinh_id',$id_hs)->get();
+
+    public function getAllHsByIdUser($id){
+        return $this->model->where('user_id',$id)->get();
     }
 
 }

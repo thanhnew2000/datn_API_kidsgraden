@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-
+use App\Models\HocSinh;
 class AuthController extends Controller
 {
     /**
@@ -25,14 +25,23 @@ class AuthController extends Controller
     public function login()
     {
         // return 1;
-        
         $credentials = request(['username', 'password']);
 
         if (! $token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-        return $this->respondWithToken($token);
+        if(Auth::user()->role == 3){
+            $DuLieuHocSinh = HocSinh::where('user_id',Auth::user()->id)->first();
+            $DuLieuHocSinh->getLop;
+            return [
+            'token_user' => $this->respondWithToken($token),
+            'data_hocsinh' => $DuLieuHocSinh,
+            'data_user'=> Auth::user()
+            ];
+         return $this->respondWithToken($token);
+        }else{
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
     }
 
     /**

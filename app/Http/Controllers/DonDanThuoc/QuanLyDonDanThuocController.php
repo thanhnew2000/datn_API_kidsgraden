@@ -26,11 +26,11 @@ class QuanLyDonDanThuocController extends Controller
         $this->NotificationRepository = $NotificationRepository;
     }
 
-    public function store(Request $request)
+    public function store(Request $request,$id_hs)
     {
         // return $request->all();
         $don_dan_thuoc =[];
-        $don_dan_thuoc['phu_huynh_id']  = 1;
+        $don_dan_thuoc['hoc_sinh_id']  = $id_hs;
         $don_dan_thuoc['ngay_bat_dau']  = Carbon::parse($request->dateFrom)->format('Y-m-d');
         $don_dan_thuoc['ngay_ket_thuc']  = Carbon::parse($request->dateTo)->format('Y-m-d')  ;
         $don_dan_thuoc['noi_dung']  = $request->loinhan;
@@ -43,10 +43,12 @@ class QuanLyDonDanThuocController extends Controller
             $chi_tiet_don_thuoc['ten_thuoc']  = $value['name'];
             $chi_tiet_don_thuoc['don_vi']  = $value['donvi'];
             $chi_tiet_don_thuoc['lieu_luong']  =  $value['lieu'];
-            $anh = $value["anhImage"];
-            $pathLoad = $anh->store('public/uploads/anh_thuoc');
-            $path =  $pathLoad;
-            $chi_tiet_don_thuoc['anh'] = $path; 
+            $chi_tiet_don_thuoc['ghi_chu']  =  $value['note'];
+            if(isset($value["anhImage"])){
+                $anh = $value["anhImage"];
+                $pathLoad = $anh->store('uploads/anh_thuoc');
+                $chi_tiet_don_thuoc['anh'] = $pathLoad; 
+            }
             $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
       
         };
@@ -61,4 +63,24 @@ class QuanLyDonDanThuocController extends Controller
         $this->NotificationRepository->create($thongbao);
         return $thongbao;
     }
+    public function getAll(){
+        $don_thuoc =  $this->QuanLyDonDanThuocRepository->getAll();
+        $don_thuoc->each(function ($item){
+           $item->ChiTietDonDanThuoc;
+       });
+       return $don_thuoc;
+    }
+
+    public function getAllByIdHs($id_hs){
+        $don_thuoc =  $this->QuanLyDonDanThuocRepository->getAllByIdHs($id_hs);
+        $don_thuoc->each(function ($item){
+           $item->ChiTietDonDanThuoc;
+       });
+       return $don_thuoc;
+    }
+
+    public function getOneChiTietThuoc($id){
+      return  $this->ChiTietDonDanThuocRepository->find($id);
+    }
+    
 }
