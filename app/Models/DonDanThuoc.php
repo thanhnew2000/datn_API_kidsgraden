@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ChiTietDonDanThuoc;
+use Carbon\Carbon;
 class DonDanThuoc extends Model
 {
     protected $table = 'don_dan_thuoc';
@@ -18,6 +19,19 @@ class DonDanThuoc extends Model
     ];
     public function ChiTietDonDanThuoc()
     {
-        return $this->hasMany(ChiTietDonDanThuoc::class,'dan_dan_thuoc_id','id');
+        return $this->hasMany(ChiTietDonDanThuoc::class,'don_dan_thuoc_id','id');
     }
+
+    
+    // public function getNgayBatDauAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->format('Y-m-d');
+    // }
+
+    // public function getNgayKetThucAttribute($value)
+    // {
+    //     $date = Carbon::parse($value);
+    //     return $date->format('Y-m-d');
+    // }
 }
