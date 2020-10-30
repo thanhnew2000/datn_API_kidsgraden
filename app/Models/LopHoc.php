@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\GiaoVien;
 
 class LopHoc extends Model
 {
@@ -12,4 +13,9 @@ class LopHoc extends Model
         'khoi_id',
         'ten_lop',
     ];
+
+    public function GiaoVien()
+    {
+        return $this->hasMany(GiaoVien::class,'lop_id','id');
+    }
 }
