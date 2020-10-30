@@ -68,10 +68,6 @@ class QuanLyDonDanThuocController extends Controller
             $thongbao['auth_id'] =$id_hs;
             $this->NotificationRepository->create($thongbao);
         }
-        
-
-
-       
         return $thongbao;
     }
     public function getAll(){
