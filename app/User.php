@@ -6,7 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-
+use App\Models\HocSinh;
+use App\Models\GiaoVien;
 class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
@@ -52,4 +53,16 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+
+    public function HocSinh()
+    {
+        return $this->hasOne(HocSinh::class,'user_id','id');
+    }
+
+    public function GiaoVien()
+    {
+        return $this->hasOne(GiaoVien::class);
+    }
+    
 }

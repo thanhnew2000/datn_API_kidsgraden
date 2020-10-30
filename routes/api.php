@@ -25,7 +25,10 @@ Route::group(['namespace'=>'Users'],function(){
     Route::get('get-hoc-sinh', 'UserController@getOne');
 });
 
-
+Route::group(['namespace'=>'PhanHoiDonThuoc'],function(){
+    Route::get('get-binh-luan-phan-hoi-thuoc/{id}', 'PhanHoiDonThuocController@getBinhLuanOfDonThuoc');
+    Route::post('insert-binh-luan-phan-hoi', 'PhanHoiDonThuocController@store');
+}); 
 
 // Route::group(['namespace'=>'XinNghiHoc'],function(){
 //     Route::post('xin-nghi-hoc', 'QuanLyXinNghiHocController@store');
@@ -66,6 +69,9 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('get-giao-vien-lop/{id}', 'GiaoVienController@getGVbyIdLop');
     });
     
+
+
+
     Route::group(['namespace'=>'HocSinh'],function(){
         Route::get('get-one-hoc-sinh/{id}', 'HocSinhController@getOne');
         Route::get('get-hoc-sinh-id-user/{id}', 'HocSinhController@getAllHsByIdUser');
