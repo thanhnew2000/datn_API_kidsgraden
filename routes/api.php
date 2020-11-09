@@ -29,7 +29,24 @@ Route::group(['namespace'=>'PhanHoiDonThuoc'],function(){
     Route::get('get-binh-luan-phan-hoi-thuoc/{id}', 'PhanHoiDonThuocController@getBinhLuanOfDonThuoc');
     Route::post('insert-binh-luan-phan-hoi', 'PhanHoiDonThuocController@store');
 }); 
+Route::group(['namespace'=>'SucKhoe'],function(){
+    Route::get('get-suc-khoe-hoc-sinh-theo-nam/{nam}', 'SucKhoeController@getSucKhoeHs');
+    Route::get('get-nam-have-data-sk', 'SucKhoeController@getNamHaveDataSucKhoeHs');
+    Route::get('get-all-data-sk-hs/{id}', 'SucKhoeController@getAllSucKhoeHs');
+}); 
 
+Route::group(['namespace'=>'HoatDong'],function(){
+    Route::get('get-hoat-dong-hoc-sinh/{id_lop}', 'HoatDongController@getHoatDong');
+    Route::get('get-hoat-dong-hoc-sinh-by-nam/{id_lop}/{nam}', 'HoatDongController@getHoatDongByNam');
+}); 
+
+Route::group(['namespace'=>'NamHoc'],function(){
+    Route::get('get-nam-hoc-hien-tai', 'NamHocController@getNamHocHienTai');
+}); 
+Route::group(['namespace'=>'DiemDanh'],function(){
+    Route::post('get-diem-danh-thang', 'DiemDanhDenController@getDataByThangNam');
+    Route::get('test-query', 'DiemDanhDenController@testQuery');
+}); 
 // Route::group(['namespace'=>'XinNghiHoc'],function(){
 //     Route::post('xin-nghi-hoc', 'QuanLyXinNghiHocController@store');
 //     Route::get('all-don-xin-nghi', 'QuanLyXinNghiHocController@getAll');
