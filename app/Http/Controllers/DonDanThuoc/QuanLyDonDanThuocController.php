@@ -36,7 +36,10 @@ class QuanLyDonDanThuocController extends Controller
         $don_dan_thuoc =[];
         $don_dan_thuoc['hoc_sinh_id']  = $id_hs;
         $hoc_sinh = $this->HocSinhRepository->find($id_hs);
-        $get_giao_vien = $hoc_sinh->getLop->GiaoVien()->select('user_id')->get();
+        $get_giao_vien = $hoc_sinh->getLop->GiaoVien()->get();
+        if(count($get_giao_vien) == 0){
+            return 'NoGiaoVien';
+        }
         $don_dan_thuoc['ngay_bat_dau']  = Carbon::parse($request->dateFrom)->format('Y-m-d');
         $don_dan_thuoc['ngay_ket_thuc']  = Carbon::parse($request->dateTo)->format('Y-m-d')  ;
         $don_dan_thuoc['noi_dung']  = $request->loinhan;
@@ -61,7 +64,6 @@ class QuanLyDonDanThuocController extends Controller
       
         };
         foreach ($get_giao_vien as $key => $data_giao_vien) {
-            // return $data_giao_vien->id;
             $thongbao=[];
             $thongbao['title'] ='Thông báo đơn dặn thuốc';
             $thongbao['content'] ='nội dung';

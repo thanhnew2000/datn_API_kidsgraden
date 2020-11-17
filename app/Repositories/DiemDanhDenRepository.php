@@ -24,8 +24,8 @@ class DiemDanhDenRepository extends BaseModelRepository
     {
         return $this->model->get();
     }
-    public function getDataByMonthYear($thang,$nam){
-        return $this->model->whereMonth('ngay_diem_danh_den',$thang)->whereYear('ngay_diem_danh_den',$nam)->get();
+    public function getDataByMonthYear($thang,$nam,$id_hs){
+        return $this->model->where('hoc_sinh_id',$id_hs)->whereMonth('ngay_diem_danh_den',$thang)->whereYear('ngay_diem_danh_den',$nam)->get();
     }
 
 

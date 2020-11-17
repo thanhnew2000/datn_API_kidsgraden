@@ -24,6 +24,10 @@ class UserRepository extends BaseModelRepository
     {
         return $this->model->get();
     }
+    public function edit($id,$device){
+        return  $this->model->where('id',$id)->update(['device' => $device]);
+    }
 
+    
 
 }

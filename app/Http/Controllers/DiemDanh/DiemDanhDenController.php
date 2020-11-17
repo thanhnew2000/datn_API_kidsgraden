@@ -24,8 +24,9 @@ class DiemDanhDenController extends Controller
         $arrDate = explode(' / ',$request->date);
         $thang = $arrDate[0];
         $nam = $arrDate[1];
-        $den = $this->DiemDanhDenRepository->getDataByMonthYear($thang,$nam);
-        $ve =  $this->DiemDanhVeRepository->getDataByMonthYear($thang,$nam);
+        $id_hs = $request->id_hs;
+        $den = $this->DiemDanhDenRepository->getDataByMonthYear($thang,$nam,$id_hs);
+        $ve =  $this->DiemDanhVeRepository->getDataByMonthYear($thang,$nam,$id_hs);
         return [
             'diem_danh_den' => $den,
             'diem_danh_ve' => $ve,

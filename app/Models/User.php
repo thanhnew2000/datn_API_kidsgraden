@@ -11,8 +11,10 @@ class User extends Model
     protected $fillable = [
         'id',
         'name',
+        'password',
         'avatar',
         'email',
+        'device',
     ];
 
     public function HocSinh()

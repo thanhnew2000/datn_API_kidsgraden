@@ -19,8 +19,8 @@ class QuanLyDonHo extends Controller
         $this->NguoiDonHoRepository = $NguoiDonHoRepository;
     }
 
-    public function getAll(){
-        $data =  $this->NguoiDonHoRepository->getAll();
+    public function getNguoiDonHoByIdHs($id_hs){
+        $data =  $this->NguoiDonHoRepository->getByIdHs($id_hs);
        return $data;
     }
     

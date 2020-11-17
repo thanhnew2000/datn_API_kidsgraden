@@ -2,14 +2,14 @@
 
 namespace App\Repositories;
 
-use App\Models\XinNghiHoc;
+use App\Models\DonNghiHoc;
 use App\Repositories\BaseModelRepository;
 
 class XinNghiHocRepository extends BaseModelRepository
 {
     protected $model;
     public function __construct(
-        XinNghiHoc $model
+        DonNghiHoc $model
     ) {
         parent::__construct();
         $this->model = $model;
@@ -17,7 +17,7 @@ class XinNghiHocRepository extends BaseModelRepository
 
     public function getModel()
     {
-        return XinNghiHoc::class;
+        return DonNghiHoc::class;
     }
 
     public function store()

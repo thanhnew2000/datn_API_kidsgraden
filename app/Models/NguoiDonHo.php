@@ -16,6 +16,6 @@ class NguoiDonHo extends Model
         'ten_nguoi_don_ho',
         'ghi_chu',
         'cmtnd',
-        'user_id',
+        'hoc_sinh_id',
     ];
 }
