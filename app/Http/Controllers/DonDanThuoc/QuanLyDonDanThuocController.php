@@ -43,11 +43,11 @@ class QuanLyDonDanThuocController extends Controller
         $don_dan_thuoc['ngay_bat_dau']  = Carbon::parse($request->dateFrom)->format('Y-m-d');
         $don_dan_thuoc['ngay_ket_thuc']  = Carbon::parse($request->dateTo)->format('Y-m-d')  ;
         $don_dan_thuoc['noi_dung']  = $request->loinhan;
+        $don_dan_thuoc['lop_id']  = $request->lop_id;
         
         $id = $this->QuanLyDonDanThuocRepository->create($don_dan_thuoc)->id;
 
         $don_thuoc= $request->donthuoc;
-        $arr = [];
         foreach ($don_thuoc as $key => $value) {
             $chi_tiet_don_thuoc = [];
             $chi_tiet_don_thuoc['don_dan_thuoc_id']  = $id;
@@ -60,10 +60,8 @@ class QuanLyDonDanThuocController extends Controller
                 $pathLoad = $anh->store('uploads/anh_thuoc');
                 $chi_tiet_don_thuoc['anh'] = $pathLoad; 
             }
-            // $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
-            array_push($arr, $chi_tiet_don_thuoc);
+            $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
         };
-       $this->ChiTietDonDanThuocRepository->create($arr);
        
         foreach ($get_giao_vien as $key => $data_giao_vien) {
             $thongbao=[];
