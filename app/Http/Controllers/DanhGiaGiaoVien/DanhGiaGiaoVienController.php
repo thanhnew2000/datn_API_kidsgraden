@@ -19,8 +19,8 @@ class DanhGiaGiaoVienController extends Controller
 
         public function store(Request $request){
             // return $request->all();
-            $data['phu_huynh_id'] = $request->phu_huynh_id;
-            $data['giao_vien_id'] = $request->giao_vien_id;
+            $data['hoc_sinh_id'] = $request->hoc_sinh_id;
+            $data['lop_id'] = $request->lop_id;
             $data['noi_dung'] = $request->noi_dung;
             $data['ngay_danh_gia']  = Carbon::now()->format('Y-m-d');
            

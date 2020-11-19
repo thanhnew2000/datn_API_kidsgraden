@@ -10,7 +10,7 @@ class DanhGiaGiaoVien extends Model
     protected $fillable = [
         'id',
         'hoc_sinh_id',
-        'giao_vien_id',
+        'lop_id',
         'noi_dung',
         'ngay_danh_gia',
     ];

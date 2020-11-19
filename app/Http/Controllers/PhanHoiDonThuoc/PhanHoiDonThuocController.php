@@ -38,8 +38,9 @@ class PhanHoiDonThuocController extends Controller
             $thongbao['title'] =$hoc_sinh->ten.' đã phản hồi về đơn dặn thuốc';
             $thongbao['content'] ='nội dung';
             $thongbao['route'] = 'route';
-            $thongbao['user_id'] = $data_giao_vien->user_id;
+            $thongbao['id_nguoi_nhan'] = $data_giao_vien->user_id;
             $thongbao['auth_id'] = $id_hs;
+            $thongbao['role'] = 1;
             $this->NotificationRepository->create($thongbao);
         }
     }

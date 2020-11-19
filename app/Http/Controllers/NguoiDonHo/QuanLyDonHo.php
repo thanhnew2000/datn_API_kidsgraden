@@ -27,7 +27,7 @@ class QuanLyDonHo extends Controller
     public function store(Request $request,$id_hs){
             // return $request->all();
             $data['cmtnd'] = $request->cmtnd;
-            $data['user_id'] = $id_hs;
+            $data['hoc_sinh_id'] = $id_hs;
             $data['phone_number'] = $request->phone_number;
             $data['ghi_chu'] = $request->ghi_chu;
             $data['ten_nguoi_don_ho'] = $request->ten_nguoi_don_ho;
