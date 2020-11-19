@@ -47,7 +47,7 @@ class QuanLyDonDanThuocController extends Controller
         $id = $this->QuanLyDonDanThuocRepository->create($don_dan_thuoc)->id;
 
         $don_thuoc= $request->donthuoc;
-        
+        $arr = [];
         foreach ($don_thuoc as $key => $value) {
             $chi_tiet_don_thuoc = [];
             $chi_tiet_don_thuoc['don_dan_thuoc_id']  = $id;
@@ -60,9 +60,11 @@ class QuanLyDonDanThuocController extends Controller
                 $pathLoad = $anh->store('uploads/anh_thuoc');
                 $chi_tiet_don_thuoc['anh'] = $pathLoad; 
             }
-            $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
-      
+            // $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
+            array_push($arr, $chi_tiet_don_thuoc);
         };
+       $this->ChiTietDonDanThuocRepository->create($arr);
+       
         foreach ($get_giao_vien as $key => $data_giao_vien) {
             $thongbao=[];
             $thongbao['title'] ='Thông báo đơn dặn thuốc';
