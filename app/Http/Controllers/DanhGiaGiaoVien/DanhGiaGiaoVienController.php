@@ -22,8 +22,7 @@ class DanhGiaGiaoVienController extends Controller
             $data['hoc_sinh_id'] = $request->hoc_sinh_id;
             $data['lop_id'] = $request->lop_id;
             $data['noi_dung'] = $request->noi_dung;
-            $data['ngay_danh_gia']  = Carbon::now()->format('Y-m-d');
-           
+            // $data['ngay_danh_gia']  = Carbon::now()->format('Y-m-d');
             return $this->DanhGiaGiaoVienRepository->create($data);
     }
     

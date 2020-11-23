@@ -12,6 +12,6 @@ class DanhGiaGiaoVien extends Model
         'hoc_sinh_id',
         'lop_id',
         'noi_dung',
-        'ngay_danh_gia',
+        'trang_thai',
     ];
 }

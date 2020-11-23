@@ -9,6 +9,7 @@ class DonNghiHoc extends Model
     protected $table = 'don_nghi_hoc';
     protected $fillable = [
         'id',
+        'lop_id',
         'hoc_sinh_id',
         'giao_vien_id',
         'ngay_ket_thuc',

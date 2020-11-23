@@ -29,12 +29,16 @@ class UserController extends Controller
 
     public function update(Request $request,$id){
         $data = [];
-        if(isset($request->password)){
-             $data['password'] = Hash::make($request->password);
+        if(isset($request->new_password)){
              $this_user = $this->UserRepository->find($id);
-             if(Hash::check($request->oldPassword,$this_user->password)){
-                 return 'NoCorrectPass';
-             }
+             if (!(Hash::check($request->get('current_password'), $this_user->password))) {
+               return 'NoCorrectPass';
+            }
+            if(strcmp($request->get('current_password'), $request->get('new_password')) == 0){
+                return 'CoincidNewPassWithOldPass';
+            }
+            $data['password'] = Hash::make($request->new_password);
+
         }else{
             $data = $request->all();
         }
