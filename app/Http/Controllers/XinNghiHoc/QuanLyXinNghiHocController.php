@@ -30,7 +30,6 @@ class QuanLyXinNghiHocController extends Controller
     public function store(Request $request,$id_hs)
     {
         // $data =  $request->all();
-        $data['giao_vien_id']  = 1;
         $data['hoc_sinh_id']  = $id_hs;
         $data['lop_id']  = $request->lop_id;
         $data['ngay_bat_dau']  = Carbon::parse($request->ngay_bat_dau)->format('Y-m-d');

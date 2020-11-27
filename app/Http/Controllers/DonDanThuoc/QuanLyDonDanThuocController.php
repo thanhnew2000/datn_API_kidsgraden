@@ -90,6 +90,12 @@ class QuanLyDonDanThuocController extends Controller
        return $don_thuoc;
     }
 
+    public function getDonThuocById($id){
+         $item =  $this->QuanLyDonDanThuocRepository->find($id);
+         $item->ChiTietDonDanThuoc;
+         return $item;
+    }
+
     public function getOneChiTietThuoc($id){
       return  $this->ChiTietDonDanThuocRepository->find($id);
     }

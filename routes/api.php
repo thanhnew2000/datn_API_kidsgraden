@@ -27,6 +27,9 @@ Route::group(['namespace'=>'Users'],function(){
     Route::post('sua-info-user/{id}', 'UserController@update');
 });
 
+Route::group(['namespace'=>'DiemDanh'],function(){
+    Route::get('test-d-d', 'DiemDanhController@testQuery2');
+}); 
 
 
 
@@ -61,6 +64,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::post('dan-thuoc/{id_hs}', 'QuanLyDonDanThuocController@store');
         Route::get('all-dan-thuoc', 'QuanLyDonDanThuocController@getAll');
         Route::get('all-dan-thuoc-hs/{id_hs}', 'QuanLyDonDanThuocController@getAllByIdHs');
+        Route::get('get-one-don-thuoc/{id}', 'QuanLyDonDanThuocController@getDonThuocById');
+
     });
 
     Route::group(['namespace'=>'DanhGiaGiaoVien'],function(){
@@ -91,8 +96,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('get-nam-hoc-hien-tai', 'NamHocController@getNamHocHienTai');
     }); 
     Route::group(['namespace'=>'DiemDanh'],function(){
-        Route::post('get-diem-danh-thang', 'DiemDanhDenController@getDataByThangNam');
-        Route::get('test-query', 'DiemDanhDenController@testQuery');
+        Route::post('get-diem-danh-thang', 'DiemDanhController@getDataByThangNam');
+        Route::get('test-query', 'DiemDanhController@testQuery');
     }); 
 
     Route::group(['namespace'=>'PhanHoiDonThuoc'],function(){

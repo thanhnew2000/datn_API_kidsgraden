@@ -70,5 +70,10 @@ class DiemDanhVeRepository extends BaseModelRepository
         //  ->groupBy('year1')
         //  ->get();
     }
-
+    public function getDataOfMonth($firstDayOfMonth,$lastDayOfMonth){
+        return $this->model->where('ngay_diem_danh_ve', '>=',$firstDayOfMonth)
+                           ->where('ngay_diem_danh_ve', '<=', $lastDayOfMonth)
+                           ->orderBy('ngay_diem_danh_ve', 'ASC')
+                           ->get();
+    }
 }

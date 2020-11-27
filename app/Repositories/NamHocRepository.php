@@ -30,6 +30,6 @@ class NamHocRepository  extends BaseModelRepository
         return $this->model::where('type', 1)->first();
     }
 
-   
+    
 
 }

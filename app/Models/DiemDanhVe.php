@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\NguoiDonHo;
 
 class DiemDanhVe extends Model
 {
@@ -19,4 +20,11 @@ class DiemDanhVe extends Model
         'nguoi_don_ho_id',
         'lop_id',
     ];
+
+    public function NguoiDonHo()
+    {
+        return $this->hasOne(NguoiDonHo::class,'id','nguoi_don_ho_id');
+    }
+
+
 }
