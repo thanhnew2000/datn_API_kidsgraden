@@ -24,7 +24,10 @@ class NotificationController extends Controller
         return $this->NotificationRepository->getAllNotifiByUser($id_nguoi_nhan);
 
     }
-
+    public function updateTypeOrBellHs($id_hs,$status)
+    {
+        return $this->NotificationRepository->updateTypeOrBellHs($id_hs,$status);
+    }
     
 
 }

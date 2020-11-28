@@ -32,6 +32,7 @@ Route::group(['namespace'=>'DiemDanh'],function(){
 }); 
 
 
+Route::post('update-type-bell-hs/{id_hs}/{status}', 'Notification\NotificationController@updateTypeOrBellHs');
 
 
 
@@ -107,6 +108,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['namespace'=>'Notification'],function(){
         Route::get('get-thong-bao-by-user/{id_nguoi_nhan}', 'NotificationController@getNofiByIdUser');
         Route::get('get-all-thong-bao-by-user/{id_nguoi_nhan}', 'NotificationController@getAllNotifiByUser');
+        // Route::post('update-bell-hs/{id_hs}', 'NotificationController@updateBellHs');
     }); 
     
 
