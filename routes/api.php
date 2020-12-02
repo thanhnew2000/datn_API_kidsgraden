@@ -27,6 +27,11 @@ Route::group(['namespace'=>'Users'],function(){
     Route::post('sua-info-user/{id}', 'UserController@update');
 });
 
+
+Route::post('update-device-user/{id}', 'Users\UserController@updateOnlyDevice');
+
+
+
 Route::group(['namespace'=>'DiemDanh'],function(){
     Route::get('test-d-d', 'DiemDanhController@testQuery2');
 }); 

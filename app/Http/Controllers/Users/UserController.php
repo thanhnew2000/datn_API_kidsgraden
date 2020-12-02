@@ -44,4 +44,7 @@ class UserController extends Controller
         }
        return $this->UserRepository->update($id,$data); 
     }
+    public function updateOnlyDevice($id){
+        return $this->UserRepository->update($id,['device'=> null]); 
+    }
 }

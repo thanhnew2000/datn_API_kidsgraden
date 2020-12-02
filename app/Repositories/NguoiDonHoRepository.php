@@ -26,7 +26,7 @@ class NguoiDonHoRepository extends BaseModelRepository
     }
 
     public function getByIdHs($id){
-        return $this->model->where('hoc_sinh_id',$id)->get();
+        return $this->model->where('hoc_sinh_id',$id)->orderBy('id','desc')->get();
     }
 
 }

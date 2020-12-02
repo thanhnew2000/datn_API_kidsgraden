@@ -55,6 +55,7 @@ class SucKhoeRepository extends BaseModelRepository
         ->join('dot_kham_suc_khoe', 'dot_kham_suc_khoe.id', '=', 'suc_khoe.dot_id')
         ->where('suc_khoe.hoc_sinh_id', '=', $id_hs)
         ->select(DB::raw('YEAR(dot_kham_suc_khoe.thoi_gian) as year'))
+        ->orderBy('year','ASC')
         ->groupBy('year')
         ->get();
         return $data;

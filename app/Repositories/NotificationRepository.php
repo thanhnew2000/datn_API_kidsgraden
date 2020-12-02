@@ -27,7 +27,7 @@ class NotificationRepository extends BaseModelRepository
     }
 
     public function getNofiByIdUser($id_nguoi_nhan){
-        return $this->model->where('user_id',$id_nguoi_nhan)->where('role',2)->limit(15)->get();
+        return $this->model->where('user_id',$id_nguoi_nhan)->where('role',2)->limit(15)->orderBy('id','DESC')->get();
     }
 
     public function updateTypeOrBellHs($id_hs,$status)
