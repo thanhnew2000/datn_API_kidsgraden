@@ -42,7 +42,7 @@ class QuanLyDonDanThuocController extends Controller
         $don_dan_thuoc['ngay_bat_dau']  = Carbon::parse($request->dateFrom)->format('Y-m-d');
         $don_dan_thuoc['ngay_ket_thuc']  = Carbon::parse($request->dateTo)->format('Y-m-d');
         $don_dan_thuoc['noi_dung']  = $request->loinhan;
-        // $don_dan_thuoc['lop_id']  = $request->lop_id;
+        $don_dan_thuoc['lop_id']  = $request->lop_id;
         
         $id = $this->QuanLyDonDanThuocRepository->create($don_dan_thuoc)->id;
 

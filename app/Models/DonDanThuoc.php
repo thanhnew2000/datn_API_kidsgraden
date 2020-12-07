@@ -12,6 +12,7 @@ class DonDanThuoc extends Model
     protected $fillable = [
         'id',
         'hoc_sinh_id',
+        'lop_id',
         'ngay_bat_dau',
         'ngay_ket_thuc',
         'noi_dung',
