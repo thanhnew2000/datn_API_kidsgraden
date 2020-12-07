@@ -27,12 +27,12 @@ class NotificationRepository extends BaseModelRepository
     }
 
     public function getNofiByIdUser($id_nguoi_nhan){
-        return $this->model->where('user_id',$id_nguoi_nhan)->where('role',2)->limit(15)->orderBy('id','DESC')->get();
+        return $this->model->where('user_id',$id_nguoi_nhan)->where('role',1)->limit(15)->orderBy('id','DESC')->get();
     }
 
     public function updateTypeOrBellHs($id_hs,$status)
     {
-        $arr_hs = $this->model->where('user_id',$id_hs)->where('role',2)->select('id')->get();
+        $arr_hs = $this->model->where('user_id',$id_hs)->where('role',1)->select('id')->get();
         if($status == 1 ){
             foreach($arr_hs as $hs){
                 $this->model->find($hs->id)->update(['type'=>2]);
@@ -46,7 +46,7 @@ class NotificationRepository extends BaseModelRepository
 
     public function getAllNotifiByUser($id_nguoi_nhan){
         $data = $this->model->
-        where('user_id',$id_nguoi_nhan)->where('role',2)
+        where('user_id',$id_nguoi_nhan)->where('role',1)
         ->select(
             DB::raw(
                 '*,
@@ -56,7 +56,7 @@ class NotificationRepository extends BaseModelRepository
          ->get();
 
          $thangNam = $this->model
-         ->where('user_id',$id_nguoi_nhan)->where('role',2)
+         ->where('user_id',$id_nguoi_nhan)->where('role',1)
          ->select(
              DB::raw(
                  'YEAR(created_at) as year,

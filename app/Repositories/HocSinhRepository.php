@@ -26,7 +26,7 @@ class HocSinhRepository extends BaseModelRepository
     }
 
     public function getAllHsByIdUser($id){
-        return $this->model->where('user_id',$id)->get();
+        return $this->model->where('user_id',$id)->where('type',1)->get();
     }
 
 }

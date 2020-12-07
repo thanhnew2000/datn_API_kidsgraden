@@ -11,7 +11,6 @@ class DonDanThuoc extends Model
     protected $table = 'don_dan_thuoc';
     protected $fillable = [
         'id',
-        'lop_id',
         'hoc_sinh_id',
         'ngay_bat_dau',
         'ngay_ket_thuc',

@@ -26,6 +26,6 @@ class PhanHoiDonThuocRepository extends BaseModelRepository
     }
 
     public function getBinhLuanOfDonThuoc($id){
-        return $this->model->where('don_dan_thuoc_id',$id)->orderBy('created_at','asc')->get();
+        return $this->model->where('don_dan_thuoc_id',$id)->orderBy('id','asc')->get();
     }
 }

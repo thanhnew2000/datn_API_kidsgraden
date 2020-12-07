@@ -25,6 +25,11 @@ Route::group(['namespace'=>'Users'],function(){
     Route::get('get-hoc-sinh', 'UserController@getOne');
     Route::post('sua-device-user', 'UserController@edit');
     Route::post('sua-info-user/{id}', 'UserController@update');
+
+    Route::post('check-mail-sent-ma-otp', 'ForgotPassword@sendMaOTP');
+    Route::post('check-otp', "ForgotPassword@checkOTP");
+    Route::post('change-password-when-forgot-pass', 'ForgotPassword@changePass');
+    Route::post('remove-otp-token', 'ForgotPassword@removeOTP');
 });
 
 
@@ -55,6 +60,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('users', 'AuthController@users');
     Route::get('me', 'AuthController@me');
 
+
+  
     Route::group(['namespace'=>'NguoiDonHo'],function(){
         Route::post('tao-don-ho/{id_hs}', 'QuanLyDonHo@store');
         Route::get('nguoi-don-ho-id-hs/{id_hs}', 'QuanLyDonHo@getNguoiDonHoByIdHs');

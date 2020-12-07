@@ -32,7 +32,6 @@ class QuanLyDonDanThuocController extends Controller
 
     public function store(Request $request,$id_hs)
     {
-        // return $request->all();
         $don_dan_thuoc =[];
         $don_dan_thuoc['hoc_sinh_id']  = $id_hs;
         $hoc_sinh = $this->HocSinhRepository->find($id_hs);
@@ -41,9 +40,9 @@ class QuanLyDonDanThuocController extends Controller
             return 'NoGiaoVien';
         }
         $don_dan_thuoc['ngay_bat_dau']  = Carbon::parse($request->dateFrom)->format('Y-m-d');
-        $don_dan_thuoc['ngay_ket_thuc']  = Carbon::parse($request->dateTo)->format('Y-m-d')  ;
+        $don_dan_thuoc['ngay_ket_thuc']  = Carbon::parse($request->dateTo)->format('Y-m-d');
         $don_dan_thuoc['noi_dung']  = $request->loinhan;
-        $don_dan_thuoc['lop_id']  = $request->lop_id;
+        // $don_dan_thuoc['lop_id']  = $request->lop_id;
         
         $id = $this->QuanLyDonDanThuocRepository->create($don_dan_thuoc)->id;
 

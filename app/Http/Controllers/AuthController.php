@@ -31,8 +31,8 @@ class AuthController extends Controller
         $device =  $request->device;
         $credentials = request(['username', 'password']);
 
-        if (! $token = Auth::attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        if (!$token = Auth::attempt($credentials)) {
+            return response()->json(['error' => 'Không đúng tài khoản mk'], 401);
         }
         if(Auth::user()->role == 3){
             $DuLieuHocSinh = HocSinh::where('user_id',Auth::user()->id)->first();
@@ -53,7 +53,7 @@ class AuthController extends Controller
             ];
          return $this->respondWithToken($token);
         }else{
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Không đủ role'], 401);
         }
     }
 
