@@ -62,13 +62,21 @@ class QuanLyDonDanThuocController extends Controller
             $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
         };
        
+
+        $link = [
+            'route_name' => 'don-dan-thuoc',
+        ];
+        $route = json_encode($link);
+
         foreach ($get_giao_vien as $key => $data_giao_vien) {
             $thongbao=[];
             $thongbao['title'] ='Thông báo đơn dặn thuốc';
             $thongbao['content'] ='nội dung';
-            $thongbao['route'] = 'route';
-            $thongbao['user_id'] =$data_giao_vien->user_id;
-            $thongbao['auth_id'] =$id_hs;
+            $thongbao['route'] = $route;
+            $thongbao['user_id'] = $data_giao_vien->user_id;
+            $thongbao['role'] = 1;
+            $thongbao['auth_id'] =$hoc_sinh->user_id;
+            $thongbao['id_hs'] =$id_hs;
             $this->NotificationRepository->create($thongbao);
         }
         return $thongbao;

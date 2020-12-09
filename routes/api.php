@@ -21,6 +21,9 @@ Route::post('login', 'AuthController@login');
 //     Route::get('all-dan-thuoc', 'QuanLyDonDanThuocController@getAll');
 // });
 
+
+
+
 Route::group(['namespace'=>'Users'],function(){
     Route::get('get-hoc-sinh', 'UserController@getOne');
     Route::post('sua-device-user', 'UserController@edit');
@@ -42,8 +45,10 @@ Route::group(['namespace'=>'DiemDanh'],function(){
 }); 
 
 
-Route::post('update-type-bell-hs/{id_hs}/{status}', 'Notification\NotificationController@updateTypeOrBellHs');
+Route::post('update-bell-hs/{id_hs}', 'Notification\NotificationController@updateBellHs');
+Route::post('update-type-one-notifi/{id_notification}', 'Notification\NotificationController@updateTypeOneNotifi');
 
+Route::post('get-arr-notifi-hs-by-user', 'Notification\NotificationController@getArrNotifiNumberHs');
 
 
 // Route::group(['namespace'=>'XinNghiHoc'],function(){

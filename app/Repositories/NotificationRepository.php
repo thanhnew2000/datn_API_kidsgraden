@@ -26,22 +26,28 @@ class NotificationRepository extends BaseModelRepository
         return Notification::create($data);
     }
 
-    public function getNofiByIdUser($id_nguoi_nhan){
-        return $this->model->where('user_id',$id_nguoi_nhan)->where('role',1)->limit(15)->orderBy('id','DESC')->get();
+    public function getNofiByIdUser($id_hs){
+        return $this->model->where('id_hs',$id_hs)->limit(15)->orderBy('id','DESC')->get();
     }
 
-    public function updateTypeOrBellHs($id_hs,$status)
+    public function updateBellHs($id_hs)
     {
-        $arr_hs = $this->model->where('user_id',$id_hs)->where('role',1)->select('id')->get();
-        if($status == 1 ){
-            foreach($arr_hs as $hs){
-                $this->model->find($hs->id)->update(['type'=>2]);
-            }
-        }else{
+        $arr_hs = $this->model->where('id_hs',$id_hs)->select('id')->get();
             foreach($arr_hs as $hs){
                 $this->model->find($hs->id)->update(['bell'=>2]);
             }
-        }
+    }
+
+    public function updateTypeOneNotifi($id_notification)
+    {
+         return $this->model->find($id_notification)->update(['type'=>2]);
+    }
+
+
+    public function getNotifiHsBell1($id)
+    {
+           $hs_bell = $this->model->where('id_hs',$id)->where('bell',1)->get();
+           return $hs_bell;
     }
 
     public function getAllNotifiByUser($id_nguoi_nhan){

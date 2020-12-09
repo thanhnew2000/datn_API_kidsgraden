@@ -24,9 +24,26 @@ class NotificationController extends Controller
         return $this->NotificationRepository->getAllNotifiByUser($id_nguoi_nhan);
 
     }
-    public function updateTypeOrBellHs($id_hs,$status)
+    public function updateTypeOneNotifi($id_notification)
     {
-        return $this->NotificationRepository->updateTypeOrBellHs($id_hs,$status);
+        return $this->NotificationRepository->updateTypeOneNotifi($id_notification);
+    }
+    public function updateBellHs($id_hs)
+    {
+        return $this->NotificationRepository->updateBellHs($id_hs);
+    }
+
+    public function getArrNotifiNumberHs(Request $request)
+    {
+        $arr_id = $request->arr_id_hs;
+        $number=[];
+        foreach($arr_id as $id){
+           $hs_bell = $this->NotificationRepository->getNotifiHsBell1($id);
+           $tong_noti = count($hs_bell);
+           $array_ = [ 'id_hs' => $id, 'number' =>$tong_noti];
+           array_push($number,$array_);
+        }
+        return $number;
     }
     
 
