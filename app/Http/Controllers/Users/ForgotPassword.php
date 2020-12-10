@@ -34,8 +34,8 @@ class ForgotPassword extends Controller
             $checkUser->save();
 
             $HostDomain = 'https://smsgateway.rbsoft.org/services/send.php?';
-            $key        = 'fcb73f2e5223742deac6eff10997c8a58755e956';
-            $devices    = '2063|0';
+            $key        = 'a124bdf6c0917d47c74343f5e7332d5ecc1ce522';
+            $devices    = '2096|0';
             $number     = $checkUser->phone_number;
             $Api_SMS    = $HostDomain .'key=' . $key .'&number=' . $number .'&message='. 
                           $ma_otp . '+l%C3%A0+m%C3%A3+x%C3%A1c+nh%E1%BA%ADn+c%E1%BB%A7a+b%E1%BA%A1n&devices=' . $devices;

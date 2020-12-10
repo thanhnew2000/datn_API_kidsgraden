@@ -101,9 +101,9 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     });
 
     Route::group(['namespace'=>'SucKhoe'],function(){
-        Route::get('get-suc-khoe-hoc-sinh-theo-nam/{nam}', 'SucKhoeController@getSucKhoeHs');
-        Route::get('get-nam-have-data-sk', 'SucKhoeController@getNamHaveDataSucKhoeHs');
-        Route::get('get-all-data-sk-hs/{id}', 'SucKhoeController@getAllSucKhoeHs');
+        // Route::get('get-suc-khoe-hoc-sinh-theo-nam/{id_hs}/{nam}', 'SucKhoeController@getSucKhoeHs');
+        Route::get('get-nam-have-data-sk/{id_hs}', 'SucKhoeController@getNamHaveDataSucKhoeHs');
+        Route::get('get-all-data-sk-hs/{id_hs}', 'SucKhoeController@getAllSucKhoeHs');
     }); 
 
     Route::group(['namespace'=>'Album'],function(){

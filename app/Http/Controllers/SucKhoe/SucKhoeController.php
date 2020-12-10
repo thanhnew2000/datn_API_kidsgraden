@@ -15,15 +15,16 @@ class SucKhoeController extends Controller
     {
         $this->SucKhoeRepository = $SucKhoeRepository;
     }
-    public function getSucKhoeHs($nam){
-        return $this->SucKhoeRepository->getSucKhoeHs(451,$nam);
+        // CHUA DUNG
+    public function getSucKhoeHs($id_hs,$nam){
+        return $this->SucKhoeRepository->getSucKhoeHs($id_hs,$nam);
     }
-
-    public function getAllSucKhoeHs($id){
-        return $this->SucKhoeRepository->getAllSucKhoeHs($id);
+        // 
+    
+    public function getAllSucKhoeHs($id_hs){
+        return $this->SucKhoeRepository->getAllSucKhoeHs($id_hs);
     }
-
-    public function getNamHaveDataSucKhoeHs(){
-        return $this->SucKhoeRepository->getNamHaveDataSucKhoeHs(451);
+    public function getNamHaveDataSucKhoeHs($id_hs){
+        return $this->SucKhoeRepository->getNamHaveDataSucKhoeHs($id_hs);
     }
 }
