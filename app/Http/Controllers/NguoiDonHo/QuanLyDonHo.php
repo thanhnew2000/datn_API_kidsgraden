@@ -36,7 +36,7 @@ class QuanLyDonHo extends Controller
             if(isset($request->anh_nguoi_don_ho)){
                 $anh = $request->anh_nguoi_don_ho;
                 $pathLoad = $anh->store('uploads/anh_nguoi_don_ho');
-                $data['anh_nguoi_don_ho'] = $pathLoad; 
+                $data['anh_nguoi_don_ho'] =  $request->getSchemeAndHttpHost().'/storage/'.$pathLoad;
             }
             return $this->NguoiDonHoRepository->create($data);
     }

@@ -57,7 +57,7 @@ class QuanLyDonDanThuocController extends Controller
             if(isset($value["anhImage"])){
                 $anh = $value["anhImage"];
                 $pathLoad = $anh->store('uploads/anh_thuoc');
-                $chi_tiet_don_thuoc['anh'] = $pathLoad; 
+                $chi_tiet_don_thuoc['anh'] = $request->getSchemeAndHttpHost().'/storage/'.$pathLoad; 
             }
             $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
         };
