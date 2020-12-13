@@ -59,19 +59,12 @@ class DiemDanhVeRepository extends BaseModelRepository
             $result[$thangNam[$i]->year.'-'.$thangNam[$i]->month] = $arrTn ;
         }
         return  $result;
- 
-
-        // DB::table('diem_danh_ve as dd1')
-        // ->select(
-        //     DB::raw(
-        //         'YEAR(dd1.ngay_diem_danh_ve) as year1,
-        //         MONTH(dd1.ngay_diem_danh_ve) as month1',
-        //     ))
-        //  ->groupBy('year1')
-        //  ->get();
     }
-    public function getDataOfMonth($firstDayOfMonth,$lastDayOfMonth){
-        return $this->model->where('ngay_diem_danh_ve', '>=',$firstDayOfMonth)
+
+    
+    public function getDataOfMonth($firstDayOfMonth,$lastDayOfMonth,$id_hs){
+        return $this->model->where('hoc_sinh_id',$id_hs)
+                           ->where('ngay_diem_danh_ve', '>=',$firstDayOfMonth)
                            ->where('ngay_diem_danh_ve', '<=', $lastDayOfMonth)
                            ->orderBy('ngay_diem_danh_ve', 'ASC')
                            ->get();

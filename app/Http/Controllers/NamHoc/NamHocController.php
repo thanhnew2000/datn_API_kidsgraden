@@ -23,8 +23,9 @@ class NamHocController extends Controller
         // 0 là năm
         // 1 là tháng 
         // 2 là ngày
-        if($arrDateStart[0] != $arrDateEnd[0]){
-            for($i = $arrDateStart[1] ; $i <= 12 ; $i ++){
+        // dùng ltrim để loại bỏ số 0 ở đầu vì dụ 09 -> 9
+        if($arrDateStart[0] !== $arrDateEnd[0]){
+            for($i = ltrim($arrDateStart[1],'0'); $i <= 12 ; $i ++){
                 array_push($arr,$i." / " .$arrDateStart[0]);
             };
             for($j = 1 ; $j <= $arrDateEnd[1] ; $j ++){

@@ -36,13 +36,16 @@ class AuthController extends Controller
         }
         if(Auth::user()->role == 3){
             $DuLieuHocSinh = HocSinh::where('user_id',Auth::user()->id)->first();
-            $DuLieuHocSinh->getLop;
+            if($DuLieuHocSinh->getLop !== null){
+                $DuLieuHocSinh->getLop;
+            }
             User::where('id',Auth::user()->id)->update(['device' => $device]);
-
 
             $all_hs = HocSinh::where('user_id',Auth::user()->id)->get();
             $all_hs->each(function ($item){
-                $item->getLop;
+                if($item->getLop !== null){
+                    $item->getLop;
+                }
             });
 
             return [

@@ -28,10 +28,9 @@ class DiemDanhDenRepository extends BaseModelRepository
         return $this->model->where('hoc_sinh_id',$id_hs)->whereMonth('ngay_diem_danh_den',$thang)->whereYear('ngay_diem_danh_den',$nam)->get();
     }
 
- 
-
-    public function getDataOfMonth($firstDayOfMonth,$lastDayOfMonth){
-        return $this->model->where('ngay_diem_danh_den', '>=',$firstDayOfMonth)
+    public function getDataOfMonth($firstDayOfMonth,$lastDayOfMonth,$id_hs){
+        return $this->model->where('hoc_sinh_id',$id_hs)
+                            ->where('ngay_diem_danh_den', '>=',$firstDayOfMonth)
                            ->where('ngay_diem_danh_den', '<=', $lastDayOfMonth)
                            ->get();
     }

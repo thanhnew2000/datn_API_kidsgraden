@@ -22,13 +22,17 @@ class HocSinhController extends Controller
     }
     public function getOne($id){
         $data = $this->HocSinhRepository->find($id);
-        $data->getLop;
+        if($data->getLop !== null){
+            $data->getLop;
+        }
         return $data;
     }
     public function getAllHsByIdUser($id){
         $data = $this->HocSinhRepository->getAllHsByIdUser($id);
         $data->each(function ($item){
-            $item->getLop;
+            if($item->getLop !== null){
+                $item->getLop;
+            }
         });
         return $data;
     }
