@@ -33,11 +33,6 @@ Route::group(['namespace'=>'HocPhi'],function(){
 
 });
 
-
-
-
-
-
 Route::group(['namespace'=>'Users'],function(){
     Route::get('get-hoc-sinh', 'UserController@getOne');
     Route::post('sua-device-user', 'UserController@edit');
@@ -64,15 +59,6 @@ Route::post('update-type-one-notifi/{id_notification}', 'Notification\Notificati
 
 Route::post('get-arr-notifi-hs-by-user', 'Notification\NotificationController@getArrNotifiNumberHs');
 
-
-// Route::group(['namespace'=>'XinNghiHoc'],function(){
-//     Route::post('xin-nghi-hoc', 'QuanLyXinNghiHocController@store');
-//     Route::get('all-don-xin-nghi', 'QuanLyXinNghiHocController@getAll');
-// });
-// Route::group(['namespace'=>'NguoiDonHo'],function(){
-//     Route::post('tao-don-ho', 'QuanLyDonHo@store');
-//     Route::get('all-nguoi-don-ho', 'QuanLyDonHo@getAll');
-// });
 
 Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('logout','AuthController@logout');
@@ -139,7 +125,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['namespace'=>'Notification'],function(){
         Route::get('get-thong-bao-by-user/{id_nguoi_nhan}', 'NotificationController@getNofiByIdUser');
         Route::get('get-all-thong-bao-by-user/{id_nguoi_nhan}', 'NotificationController@getAllNotifiByUser');
-        // Route::post('update-bell-hs/{id_hs}', 'NotificationController@updateBellHs');
     }); 
     
 
