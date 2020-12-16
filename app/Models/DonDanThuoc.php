@@ -17,6 +17,7 @@ class DonDanThuoc extends Model
         'ngay_ket_thuc',
         'noi_dung',
         'trang_thai',
+        'id_hs'
     ];
     public function ChiTietDonDanThuoc()
     {

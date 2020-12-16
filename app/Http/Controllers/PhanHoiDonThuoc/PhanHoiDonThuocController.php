@@ -54,13 +54,16 @@ class PhanHoiDonThuocController extends Controller
 
     public function getBinhLuanOfDonThuoc($id){
       $data =  $this->PhanHoiDonThuocRepository->getBinhLuanOfDonThuoc($id);  
+    //   return $data;
       $data->each(function ($item){
         if($item->type == 1){
             $item->HocSinh;
         }else{
-            $item->User->GiaoVien;
+         $item->User->GiaoVien;
         }
-    });
+      });
+ 
+
     return $data;
     }
 }

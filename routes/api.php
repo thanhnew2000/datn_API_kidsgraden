@@ -58,6 +58,9 @@ Route::post('update-bell-hs/{id_hs}', 'Notification\NotificationController@updat
 Route::post('update-type-one-notifi/{id_notification}', 'Notification\NotificationController@updateTypeOneNotifi');
 
 Route::post('get-arr-notifi-hs-by-user', 'Notification\NotificationController@getArrNotifiNumberHs');
+Route::get('/get-number-notifition-hs/{id_hs}', 'Notification\NotificationController@getNumberNotifiNumberOneHs');
+
+Route::get('/get-noi-dung-thong-bao/{id_hs}', 'Notification\NoiDungThongBaoController@getNoiDungThongBaoId');
 
 
 Route::group(['middleware' => 'auth.jwt'], function () {
@@ -97,6 +100,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['namespace'=>'HocSinh'],function(){
         Route::get('get-one-hoc-sinh/{id}', 'HocSinhController@getOne');
         Route::get('get-hoc-sinh-id-user/{id}', 'HocSinhController@getAllHsByIdUser');
+        Route::get('check-token-have-hs-by-id-user/{id_user}', 'HocSinhController@checkHaveHsByIdUser');
         Route::post('edit-thong-tin-hoc-sinh/{id}', 'HocSinhController@edit');
     });
 

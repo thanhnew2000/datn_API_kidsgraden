@@ -36,4 +36,14 @@ class HocSinhController extends Controller
         });
         return $data;
     }
+    
+    public function checkHaveHsByIdUser($id_user){
+        $data = $this->HocSinhRepository->getAllHsByIdUser($id_user);
+        if(count($data) == 0){
+            return 'no';
+        }else{
+            return 'have';
+        }
+
+    }
 }

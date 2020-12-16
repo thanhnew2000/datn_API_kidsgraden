@@ -29,4 +29,5 @@ class HocSinhRepository extends BaseModelRepository
         return $this->model->where('user_id',$id)->where('type',1)->get();
     }
 
+ 
 }

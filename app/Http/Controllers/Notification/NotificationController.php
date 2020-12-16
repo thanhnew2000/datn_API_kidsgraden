@@ -45,6 +45,11 @@ class NotificationController extends Controller
         }
         return $number;
     }
+
+    public function getNumberNotifiNumberOneHs($id_hs){
+        $value = $this->NotificationRepository->getNumberNotifiNumberOneHs($id_hs);
+        return $value[0]->number ;
+    }
     
 
 }

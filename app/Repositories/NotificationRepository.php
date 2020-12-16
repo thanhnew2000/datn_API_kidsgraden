@@ -30,6 +30,10 @@ class NotificationRepository extends BaseModelRepository
         return $this->model->where('id_hs',$id_hs)->limit(15)->orderBy('id','DESC')->get();
     }
 
+    public function getNumberNotifiNumberOneHs($id_hs){
+        return $this->model->where('id_hs',$id_hs)->where('bell',1)->selectRaw("count(*) as number")->get();
+    }
+
     public function updateBellHs($id_hs)
     {
         $arr_hs = $this->model->where('id_hs',$id_hs)->select('id')->get();
