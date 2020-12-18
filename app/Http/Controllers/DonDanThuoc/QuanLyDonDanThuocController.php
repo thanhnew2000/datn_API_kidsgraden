@@ -61,8 +61,6 @@ class QuanLyDonDanThuocController extends Controller
             }
             $this->ChiTietDonDanThuocRepository->create($chi_tiet_don_thuoc);
         };
-       
-
         $link = [
             'route_name' => 'don-dan-thuoc',
         ];

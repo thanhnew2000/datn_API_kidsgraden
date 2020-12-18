@@ -25,7 +25,6 @@ class QuanLyDonHo extends Controller
     }
     
     public function store(Request $request,$id_hs){
-            // return $request->all();
             $data['cmtnd'] = $request->cmtnd;
             $data['hoc_sinh_id'] = $id_hs;
             $data['phone_number'] = $request->phone_number;
@@ -40,6 +39,5 @@ class QuanLyDonHo extends Controller
             }
             return $this->NguoiDonHoRepository->create($data);
     }
-
   
 }
