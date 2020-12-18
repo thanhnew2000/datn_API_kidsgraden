@@ -19,7 +19,6 @@ class NhanXetRepository extends BaseModelRepository
     {
         return NhanXet::class;
     }
-
     public function getNhanXetOfHs($id){
         return $this->model->where('hoc_sinh_id',$id)->orderBy('created_at','asc')->get();
     }

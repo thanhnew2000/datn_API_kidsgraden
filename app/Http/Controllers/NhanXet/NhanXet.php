@@ -15,7 +15,6 @@ class NhanXet extends Controller
     {
         $this->NhanXetRepository = $NhanXetRepository;
     }
-
     public function getNhanXetOfHs($id_hs){
         $data = $this->NhanXetRepository->getNhanXetOfHs($id_hs);
         $data->each(function ($item){
@@ -30,6 +29,5 @@ class NhanXet extends Controller
         $data = $this->NhanXetRepository->find($id);
         $data->GiaoVien;
         return $data;
-        
     }
 }

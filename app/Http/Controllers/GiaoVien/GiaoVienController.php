@@ -17,7 +17,6 @@ class GiaoVienController extends Controller
     {
         $this->GiaoVienRepository = $GiaoVienRepository;
     }
-
     public function getGVbyIdLop($id){
         return DB::table('giao_vien')->where('lop_id',$id)->get();
     }
