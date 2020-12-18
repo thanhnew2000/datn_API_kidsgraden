@@ -24,6 +24,12 @@ class NotificationController extends Controller
         return $this->NotificationRepository->getAllNotifiByUser($id_nguoi_nhan);
 
     }
+
+    public function getMoreThongBaoHs($id_hs){
+        return $this->NotificationRepository->getMoreThongBaoHs($id_hs);
+    }
+
+
     public function updateTypeOneNotifi($id_notification)
     {
         return $this->NotificationRepository->updateTypeOneNotifi($id_notification);

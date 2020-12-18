@@ -27,11 +27,15 @@ class NotificationRepository extends BaseModelRepository
     }
 
     public function getNofiByIdUser($id_hs){
-        return $this->model->where('id_hs',$id_hs)->limit(15)->orderBy('id','DESC')->get();
+        return $this->model->where('id_hs',$id_hs)->limit(20)->orderBy('id','DESC')->get();
     }
 
     public function getNumberNotifiNumberOneHs($id_hs){
         return $this->model->where('id_hs',$id_hs)->where('bell',1)->selectRaw("count(*) as number")->get();
+    }
+
+    public function getMoreThongBaoHs($id_hs){
+        return $this->model->where('id_hs',$id_hs)->limit(70)->orderBy('id','DESC')->get();
     }
 
     public function updateBellHs($id_hs)

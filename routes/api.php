@@ -130,6 +130,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::group(['namespace'=>'Notification'],function(){
         Route::get('get-thong-bao-by-user/{id_nguoi_nhan}', 'NotificationController@getNofiByIdUser');
         Route::get('get-all-thong-bao-by-user/{id_nguoi_nhan}', 'NotificationController@getAllNotifiByUser');
+        Route::get('get-more-thong-bao-by-id-hs/{id_hs}', 'NotificationController@getMoreThongBaoHs');
     }); 
     
 
