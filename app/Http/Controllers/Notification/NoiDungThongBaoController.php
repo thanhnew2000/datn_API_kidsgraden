@@ -15,7 +15,6 @@ class NoiDungThongBaoController extends Controller
     {
         $this->NoiDungThongBaoRepository = $NoiDungThongBaoRepository;
     }
-
     public function getNoiDungThongBaoId($id){
        return $this->NoiDungThongBaoRepository->find($id);
     }

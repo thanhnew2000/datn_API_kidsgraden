@@ -24,7 +24,6 @@ class NhanXet extends Controller
         });
         return $data;   
     }
-
     public function getOneId($id){
         $data = $this->NhanXetRepository->find($id);
         $data->GiaoVien;

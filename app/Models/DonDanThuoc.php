@@ -23,8 +23,6 @@ class DonDanThuoc extends Model
     {
         return $this->hasMany(ChiTietDonDanThuoc::class,'don_dan_thuoc_id','id');
     }
-
-    
     // public function getNgayBatDauAttribute($value)
     // {
     //     $date = Carbon::parse($value);
