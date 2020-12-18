@@ -62,8 +62,6 @@ class PhanHoiDonThuocController extends Controller
          $item->User->GiaoVien;
         }
       });
- 
-
     return $data;
     }
 }

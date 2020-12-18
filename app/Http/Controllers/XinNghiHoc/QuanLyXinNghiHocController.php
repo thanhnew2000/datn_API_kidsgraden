@@ -40,4 +40,8 @@ class QuanLyXinNghiHocController extends Controller
         
        return 'thành công';
     }
+
+    public function getOne($id_don){
+        return $this->XinNghiHocRepository->find($id_don);
+    }
 }

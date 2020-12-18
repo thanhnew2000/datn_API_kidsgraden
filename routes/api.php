@@ -79,6 +79,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::post('xin-nghi-hoc/{id_hs}', 'QuanLyXinNghiHocController@store');
         Route::get('all-don-xin-nghi', 'QuanLyXinNghiHocController@getAll');
         Route::get('get-don-xin-nghi-hs/{id_hs}', 'QuanLyXinNghiHocController@getAllByIdHs');
+        Route::get('get-one-don-dayoff/{id_don}', 'QuanLyXinNghiHocController@getOne');
     });
 
     Route::group(['namespace'=>'DonDanThuoc'],function(){
@@ -137,6 +138,9 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('get-hoat-dong-hoc-sinh-by-nam/{id_lop}/{nam}', 'HoatDongController@getHoatDongByNam');
     }); 
     
-    
+    Route::group(['namespace'=>'NhanXet'],function(){
+        Route::get('get-nhan-xet-of-hoc-sinh/{id_hs}', 'NhanXet@getNhanXetOfHs');
+        Route::get('get-one-nhan-xet/{id_hs}', 'NhanXet@getOneId');
+    }); 
    
 });
