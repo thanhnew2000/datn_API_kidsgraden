@@ -5,6 +5,9 @@ namespace App\Http\Controllers\XinNghiHoc;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\XinNghiHocRepository;
+use App\Repositories\HocSinhRepository;
+use App\Repositories\NotificationRepository;
+
 use Carbon\Carbon;
 
 class QuanLyXinNghiHocController extends Controller
@@ -12,10 +15,17 @@ class QuanLyXinNghiHocController extends Controller
 
     protected $XinNghiHocRepository;
     public function __construct(
-        XinNghiHocRepository $XinNghiHocRepository
+        XinNghiHocRepository $XinNghiHocRepository,
+        HocSinhRepository $HocSinhRepository,
+        NotificationRepository $NotificationRepository
+
     )
     {
         $this->XinNghiHocRepository = $XinNghiHocRepository;
+        $this->HocSinhRepository = $HocSinhRepository;
+        $this->NotificationRepository = $NotificationRepository;
+
+
     }
 
     public function getAll(){
@@ -38,7 +48,26 @@ class QuanLyXinNghiHocController extends Controller
 
         $this->XinNghiHocRepository->create($data);
         
-       return 'thành công';
+        // quang lx
+        $hoc_sinh = $this->HocSinhRepository->find($id_hs);
+        $get_giao_vien = $hoc_sinh->getLop->GiaoVien()->get();
+        $link = [
+            'route_name' => 'don-xin-nghi-hoc',
+        ];
+        $route = json_encode($link);
+        foreach ($get_giao_vien as $key => $data_giao_vien) {
+            $thongbao=[];
+            $thongbao['title'] ='Thông báo đơn nghỉ học';
+            $thongbao['content'] ='nội dung';
+            $thongbao['route'] = $route;
+            $thongbao['user_id'] = $data_giao_vien->user_id;
+            $thongbao['role'] = 3;
+            $thongbao['auth_id'] =$hoc_sinh->user_id;
+            $this->NotificationRepository->create($thongbao);
+        }
+        // return $thongbao;
+        
+         return 'thành công';
     }
 
     public function getOne($id_don){

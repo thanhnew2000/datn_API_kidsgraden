@@ -72,7 +72,7 @@ class QuanLyDonDanThuocController extends Controller
             $thongbao['content'] ='nội dung';
             $thongbao['route'] = $route;
             $thongbao['user_id'] = $data_giao_vien->user_id;
-            $thongbao['role'] = 2;
+            $thongbao['role'] = 3;
             $thongbao['auth_id'] =$hoc_sinh->user_id;
             $this->NotificationRepository->create($thongbao);
         }
