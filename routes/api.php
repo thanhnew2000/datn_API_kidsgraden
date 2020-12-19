@@ -25,13 +25,6 @@ Route::post('login', 'AuthController@login');
 
 
 
-Route::group(['namespace'=>'HocPhi'],function(){
-    Route::get('get-id-dot-thu-hs/{id}', 'HocPhiController@getNamThangOfHocPhiHs');
-    Route::get('get-all-ds-thu-tien-thang-nam-hs/{id_thang_thu_tien}/{id_hs}', 'HocPhiController@getAllDanhSachThuTienFromIdThangThuHs');
-    Route::get('get-chi-tiet-dot-thu/{id_chi_tiet_dot}/{id_hs}', 'HocPhiController@getChiTietDot');
-    Route::get('get-mien-giam/{id_hs}', 'HocPhiController@mienGiam');
-
-});
 
 Route::group(['namespace'=>'Users'],function(){
     Route::get('get-hoc-sinh', 'UserController@getOne');
@@ -143,5 +136,13 @@ Route::group(['middleware' => 'auth.jwt'], function () {
         Route::get('get-nhan-xet-of-hoc-sinh/{id_hs}', 'NhanXet@getNhanXetOfHs');
         Route::get('get-one-nhan-xet/{id_hs}', 'NhanXet@getOneId');
     }); 
+
+
+    Route::group(['namespace'=>'HocPhi'],function(){
+        Route::get('get-id-dot-thu-hs/{id}', 'HocPhiController@getNamThangOfHocPhiHs');
+        Route::get('get-all-ds-thu-tien-thang-nam-hs/{id_thang_thu_tien}/{id_hs}', 'HocPhiController@getAllDanhSachThuTienFromIdThangThuHs');
+        Route::get('get-chi-tiet-dot-thu/{id_chi_tiet_dot}/{id_hs}', 'HocPhiController@getChiTietDot');
+        Route::get('get-mien-giam/{id_hs}', 'HocPhiController@mienGiam');
+    });
    
 });
