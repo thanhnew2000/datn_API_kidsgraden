@@ -43,7 +43,6 @@ class DiemDanhController extends Controller
         $lastDayMonth = $dt->lastOfMonth()->format('d');
         $dataDen =  $this->DiemDanhDenRepository->getDataOfMonth($thangNamTiep.$firstDayMonth,$thangNamTiep.$lastDayMonth,$id_hs);
         $dataVe =  $this->DiemDanhVeRepository->getDataOfMonth($thangNamTiep.$firstDayMonth,$thangNamTiep.$lastDayMonth,$id_hs);
-
         if(count($dataDen) == 0 && count($dataVe) == 0){
             return 'NoHaveData';
         }
@@ -71,14 +70,17 @@ class DiemDanhController extends Controller
             $ngayVe['ngay'] = $key;
             $ngayVe['data'] = 0;
 
+
+
             for($j = 0 ;$j < count($dataDen) ; $j++){
+
                 if($dataDen[$j]['ngay_diem_danh_den'] == $thangNamTiep.$key){ 
                     if($dataDen[$j]['type'] == 1){
                         $ngayDen['sang'] = $dataDen[$j]['trang_thai'];
+                        $ngayDen['an'] =  $dataDen[$j]['phieu_an'];
                         $ngayDen['detail']['sang'] =  $dataDen[$j];
                     }else if($dataDen[$j]['type'] == 2){
                         $ngayDen['chieu'] = $dataDen[$j]['trang_thai'];
-                        $ngayDen['an'] =  $dataDen[$j]['phieu_an'];
                         $ngayDen['detail']['chieu'] =  $dataDen[$j];
                     }
                 }
@@ -99,6 +101,7 @@ class DiemDanhController extends Controller
       
         $arrdata = ['diem_danh_den' => $arrDen, 'diem_danh_ve' => $arrVe];
         return  $arrdata;
+
     }
 
     
