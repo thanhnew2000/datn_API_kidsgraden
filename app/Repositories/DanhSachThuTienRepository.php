@@ -38,8 +38,9 @@ class DanhSachThuTienRepository extends BaseModelRepository
     }
 
 
-    public function getDanhSachByArrIdThangThu($arr){
+    public function getDanhSachByArrIdThangThu($arr,$id_hs){
         $value =  $this->model
+        ->where('id_hoc_sinh',$id_hs)
         ->whereIn('id_thang_thu_tien',$arr)->get();
         return $value;
     }

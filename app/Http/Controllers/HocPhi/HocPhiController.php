@@ -26,7 +26,6 @@ class HocPhiController extends Controller
         $this->ChinhSachCuaHocSinhRepository = $ChinhSachCuaHocSinhRepository;
         $this->HocSinhRepository = $HocSinhRepository;
     }
-
     // public function getThangIdNamHocOfHs($id){
     //     $id_thang_thu_tien = $this->DanhSachThuTienRepository->get_id_thang_thu_tien($id);
     //     $id_thang_thu_tien->each(function ($item){
@@ -35,7 +34,6 @@ class HocPhiController extends Controller
     //     });
     //     return $id_thang_thu_tien;
     // }
-   
 
     public function getNamThangOfHocPhiHs($id){
         $arr_object_thang_thu_tien = $this->DanhSachThuTienRepository->get_arr_id_thang_thu_tien($id);
@@ -44,18 +42,14 @@ class HocPhiController extends Controller
         foreach($arr_object_thang_thu_tien as $object){
             array_push($arr_id_thang_thu_tien,$object->id_thang_thu_tien);
         }
-
         $arr_nam_groupby =  $this->QuanLyThangThuTienRepository->get_nam_from_arr_thang_thu($arr_id_thang_thu_tien);
-
         $arr_thang_thu =  $this->QuanLyThangThuTienRepository->get_thang_thu_from_arr_thang_thu($arr_id_thang_thu_tien);
 
         // tinh xem da hoan thanh hoc phi cua thang hay chua
-        $DanhSachThuTienCuaHs =  $this->DanhSachThuTienRepository->getDanhSachByArrIdThangThu($arr_id_thang_thu_tien);
-
+        $DanhSachThuTienCuaHs =  $this->DanhSachThuTienRepository->getDanhSachByArrIdThangThu($arr_id_thang_thu_tien,$id);
 
         $arr_trang_thai_dong_hoc = [];
         $tong_tien_id_thang = [];
-
 
         foreach($DanhSachThuTienCuaHs as $dstt){
             $count_id_thang = 0;
@@ -71,7 +65,6 @@ class HocPhiController extends Controller
                     }
                 }
             }
-
             $tong_tien_id_thang[$dstt->id_thang_thu_tien] = $tong_tien_thang;
 
             if($count_id_thang == $so_lan_da_dong){
